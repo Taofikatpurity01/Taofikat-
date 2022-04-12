@@ -1,0 +1,49 @@
+<?Php
+print_r("Welcome to smart calculator\n");
+print_r("==============================\n");
+
+$firstValue = readline("Enter the first number ");
+//Validating input
+if (!(is_numeric($firstValue))){
+    echo "Wrong input detected";
+    return;
+}
+
+$operatorList = ["+", "-", "*", "/"];
+$operator = readline("Enter an operator ");
+if (!((in_array($operator, $operatorList)))){
+    echo "Invalid operator";
+    return;
+}
+
+$secondValue = readline("Enter the second number ");
+//Validating input
+if (!is_numeric($secondValue)){
+    echo "Wrong input detected";
+    return;
+}
+
+$result = null;
+switch ($operator){
+    case "+":
+        $result = $firstValue + $secondValue;
+        break;
+    case "-":
+        $result = $firstValue - $secondValue;
+        break;
+    case "*":
+        $result = $firstValue * $secondValue;
+        break;
+    //Division operator handled
+    case "/":
+        //Preventing division by zeero
+        if ($secondValue == 0){
+            echo "Result will be undefined";
+            return;
+        }else{
+            $result = $firstValue / $secondValue;
+        }
+        break;
+}
+echo "Result is $result";
+?>
